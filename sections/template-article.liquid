@@ -1,4 +1,4 @@
-<article>
+<article class="py-8">
 
   {% for block in section.blocks %}
     {% case block.type %}
@@ -26,7 +26,7 @@
         </div>
       </div>
       {% when 'featured_image' %}
-      <div class="max-width7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden">
+      <div class="max-width7xl bg-blue-100 rounded-lg mx-2 md:mx-auto overflow-hidden my-4">
         {% if article.image != blank %}
           <img
             class="w-full h-80 md:h-96 object-cover object-center"
@@ -36,13 +36,18 @@
             height="{{ image.height }}"
             loading="lazy">
         {% else %}
-          {% assign placeholder_image = 'lifestyle-2' %}
+          {% assign placeholder_image = 'lifestyle-1' %}
           {{ placeholder_image | placeholder_svg_tag: 'w-full h-80 md:h-96 object-cover object-center p-5' }}
         {% endif %}
       </div>
 
       {% when 'article_content' %}
-      <div class="">{{ article.content }}</div>
+
+      <div class="flex items-center justify-center">
+        <div class="max-w-4xl">
+          {{ article.content }}
+        </div>
+      </div>
   {% else %}
 
     {% endcase %}
